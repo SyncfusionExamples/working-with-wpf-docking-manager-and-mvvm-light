@@ -1,4 +1,4 @@
-# working-with-wpf-docking-manager-and-mvvm-light
+# Working with WPF DockingManager and MVVM light
 
 This repository contains a sample that shows the WPF DockingManager in an application that uses MVVMLight.
 
