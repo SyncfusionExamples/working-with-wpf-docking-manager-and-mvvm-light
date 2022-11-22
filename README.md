@@ -13,5 +13,5 @@ The following steps explains how to create sample project with MVVMLight templat
 
 4. Attach DockingAdapter project to the DockingManagerMVVMLight project from MVVM sample. Create necessary ViewModels and Views with perfect naming conventions. Once the ItemsSource has been set to DockingAdapter children will be populate.
 
-For more detail please refer [DockingManager MVVMLight](https://help.syncfusion.com/wpf/docking/pattern-and-practices#mvvm)
+For more detail please refer [DockingManager MVVMLight](https://help.syncfusion.com/wpf/docking/pattern-and-practices#mvvmlight)
 
