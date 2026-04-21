@@ -1,38 +1,43 @@
 # Working with WPF DockingManager and MVVM Light
 
-This sample demonstrates how to integrate **Syncfusion’s WPF DockingManager** with the **MVVM Light framework** to create a modular, maintainable, and MVVM‑friendly docking application. It shows how docked windows can be managed through view models while keeping UI logic separated from business logic.
+This sample demonstrates how to integrate the **Syncfusion WPF DockingManager** with the **MVVM Light framework** to build a fully MVVM‑compliant docking application. It shows how docked and document windows can be created, managed, and synchronized through ViewModels without relying on code‑behind logic.
 
 ## Overview
-This example illustrates how to build a docking‑based WPF application using the MVVM pattern. Instead of controlling docked windows directly from code‑behind, the DockingManager is driven through view models using MVVM Light concepts such as commands, messaging, and property notifications.
+DockingManager is not an ItemsControl, which makes it challenging to use directly in an MVVM architecture. This sample addresses that limitation by introducing a **custom DockingAdapter** that bridges DockingManager with MVVM Light using dependency properties, data binding, and collection change notifications.
 
-This approach enables dynamic creation, activation, and management of docked panes while preserving clean separation of concerns and testability.
+The application uses ViewModels to represent documents and docked panes, while the DockingAdapter dynamically creates and manages DockingManager children based on the bound data source.
 
 ## What This Sample Demonstrates
-- How to use Syncfusion DockingManager in an MVVM‑based WPF application
-- How to manage docked windows using ViewModels instead of code‑behind
-- How to bind docking states such as visibility and activation to ViewModel properties
-- How to use MVVM Light messaging and commands to coordinate docking actions
-- A clean architectural pattern for scalable docking applications
+- How to integrate Syncfusion DockingManager with MVVM Light
+- How to create a custom adapter to support ItemsSource binding
+- How to represent docked panes and documents using ViewModels
+- How to synchronize the active document between the UI and ViewModel
+- How to dynamically add and remove docked windows using collections
+- How to maintain a clean separation between UI and application logic
 
 ## Key Components Used
-- **DockingManager**: Provides docking, floating, and layout management for child panes
-- **MVVM Light Toolkit**: Enables ViewModel communication, commands, and notifications
-- **ViewModel classes**: Control the state and behavior of docked windows
-- **UserControls / Content views**: Represent the visual content of docked panes
+- **DockingManager**: Manages docked and document windows
+- **DocumentContainer**: Hosts document‑style windows
+- **DockingAdapter**: Custom UserControl that enables MVVM binding
+- **IDockElement**: Interface for dockable ViewModel items
+- **Workspace / Document ViewModels**: Represent docked panes and documents
+- **MVVM Light**: Provides ViewModelBase, commands, and IOC support
 
 ## How It Works
-1. Docked windows are represented by ViewModel instances.
-2. Each ViewModel exposes properties that control the docking state and visibility.
-3. MVVM Light commands and messaging are used to trigger docking actions.
-4. The DockingManager responds to ViewModel changes through data binding.
-5. The UI updates automatically without direct code‑behind interaction.
+1. ViewModels implement the `IDockElement` interface to describe dock state and headers.
+2. A collection of dockable items is exposed from the MainViewModel.
+3. DockingAdapter binds to this collection using `ItemsSource`.
+4. DockingAdapter creates and configures DockingManager child controls dynamically.
+5. Active document changes are synchronized using a dependency property.
+6. Collection change events update the DockingManager layout in real time.
 
 ## Benefits
-- Maintains strict separation between UI and logic
-- Improves maintainability and testability of docking applications
-- Supports dynamic and complex docking layouts
-- Follows best practices for MVVM‑based WPF development
+- Enables true MVVM usage with DockingManager
+- Eliminates tight coupling between UI and logic
+- Supports dynamic document and pane management
+- Improves maintainability and testability
+- Ideal for IDE‑style and document‑centric applications
 
-This approach is ideal for IDE‑style applications, dashboards, and tool‑based interfaces that require both flexible docking and a clean MVVM architecture.
+This approach is well suited for WPF applications that require advanced docking layouts while adhering to MVVM best practices using MVVM Light.
 
 https://help.syncfusion.com/wpf/docking/pattern-and-practices#mvvmlight
